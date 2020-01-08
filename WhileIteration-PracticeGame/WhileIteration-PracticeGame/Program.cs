@@ -10,63 +10,68 @@ namespace WhileIteration_PracticeGame
     {
         static void Main(string[] args)
         {
-            bool displayMenu = true;
-            while (displayMenu)//while iteration statement used to display the menu repeatedly untill user exits
-            {
-                displayMenu = MainMenu();
-            }
-        }
-        private static bool MainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1.) Option 1: Print Numbers");
-            Console.WriteLine("2.) Option 2: Guessing Game");
-            Console.WriteLine("3.) Exit Game");
-            Console.Write("Enter your choice: ");
-            string result = Console.ReadLine();
+            MainMenu();
 
-            if (result == "1")
+        }
+        static void MainMenu()
+        {
+            Console.WriteLine("/--------------------Welcome to While Loop Game------------------------/ \n");
+            Console.WriteLine("Pick a game: \n");
+            Console.WriteLine("1.) Print Numbers");
+            Console.WriteLine("2.) Guessing Game");
+            Console.WriteLine("3.) Exit");
+            Console.Write("\nEnter your choice: ");
+            int result = Convert.ToInt32(Console.ReadLine());
+
+            if (result == 1)
             {
                 PrintNumbers();
-                return true;
             }
-
-            else if (result == "2")
+            else if (result == 2)
             {
                 GuessingGame();
-                return true;
             }
 
-            else if (result == "3")
+            else if (result == 3)
             {
                 Console.Clear();
-                Console.WriteLine("Goodbye");
-                return false;
-            }
-
-            else
-            {
-                return true;
+                Console.WriteLine("You have choosen to exit!\n");
+                Console.WriteLine("Goodbye!!!");
             }
         }
 
-        private static void PrintNumbers()
+        static void PrintNumbers()
         {
-            //Prints the numbers starting from 0 up till the user input.
             Console.Clear();
-            Console.WriteLine("Print Numbers\n");
-            Console.Write("Type a number: ");
+            Console.Write("Enter a number: ");
+
             int result = int.Parse(Console.ReadLine());
-            int counter = 1;
-            while (counter < result + 1)//while iteration used to print values to a screen based on value entered by user
+            int counter = 0;
+            Console.WriteLine($"\nHere is the print out of the number: {result}");
+            while (counter < result)
             {
-                Console.Write(counter);
-                Console.Write("-");
+                Console.Write(counter + 1 + "-");
                 counter++;
+
+            }
+            Console.Write("\n\nPress 'Esc' key to return to Main Menu or press 'Enter' to play again: ");
+            ConsoleKeyInfo cki = Console.ReadKey();
+            if (cki.Key == ConsoleKey.Enter)
+            {
+                Console.Clear();
+                PrintNumbers();
+            }
+            else if (cki.Key == ConsoleKey.Escape)
+            {
+                Console.Clear();
+                MainMenu();
+            }
+            else
+            {
+                Console.Clear();
+                MainMenu();
             }
 
-            Console.ReadLine();
 
         }
 
@@ -103,5 +108,7 @@ namespace WhileIteration_PracticeGame
 
 
         }
+
+
     }
 }
